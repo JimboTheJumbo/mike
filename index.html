@@ -83,173 +83,309 @@
 
   .nav-cta:hover { background: var(--green-dark) !important; }
 
-  /* HERO */
+  # Eye-Catching Hero Section Redesign
+
+Replace your current `.hero` section and related CSS with the version below.
+
+---
+
+## Replace Your Current HERO CSS With This
+
+```css
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(10,20,10,0.55), rgba(10,20,10,0.65)),
+    url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(113, 255, 122, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.08), transparent 25%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-text {
+  padding-bottom: 0;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 26px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 78px);
+  line-height: 0.95;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  max-width: 760px;
+}
+
+.hero-highlight {
+  color: #9cff73;
+  text-shadow: 0 0 18px rgba(156,255,115,0.45);
+}
+
+.hero p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.82);
+  max-width: 640px;
+  margin-bottom: 34px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.btn-green {
+  background: linear-gradient(135deg, #6ed94b, #3a9c2f);
+  color: white;
+  box-shadow: 0 14px 35px rgba(58,156,47,0.35);
+}
+
+.btn-green:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(58,156,47,0.45);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  color: white;
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-3px);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.hero-stat {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  padding: 18px 22px;
+  border-radius: 18px;
+  min-width: 150px;
+}
+
+.hero-stat strong {
+  display: block;
+  color: white;
+  font-size: 28px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hero-stat span {
+  color: rgba(255,255,255,0.7);
+  font-size: 14px;
+}
+
+.hero-card {
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(14px);
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+}
+
+.hero-card img {
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-card-overlay {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(20,30,20,0.72);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.hero-card-overlay h3 {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.hero-card-overlay p {
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  margin: 0;
+}
+
+.hero-floating {
+  position: absolute;
+  right: -60px;
+  top: 120px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,255,98,0.4), transparent 70%);
+  filter: blur(30px);
+}
+
+@media (max-width: 900px) {
   .hero {
-    background: var(--green-pale);
-    border-bottom: 1px solid var(--gray-light);
-    padding: 64px 24px 0;
-    overflow: hidden;
-    position: relative;
+    min-height: auto;
+    padding-top: 100px;
   }
 
   .hero-inner {
-    max-width: 1060px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: end;
-    gap: 40px;
-  }
-
-  .hero-text {
-    padding-bottom: 64px;
+    grid-template-columns: 1fr;
   }
 
   .hero h1 {
-    font-size: clamp(26px, 3.5vw, 40px);
-    font-weight: 700;
-    color: var(--green-dark);
-    line-height: 1.25;
-    margin-bottom: 16px;
+    font-size: clamp(38px, 13vw, 58px);
   }
 
-  .hero p {
-    font-size: 17px;
-    color: var(--gray);
-    margin-bottom: 28px;
-    max-width: 460px;
+  .hero-card img {
+    height: 360px;
   }
 
-  .hero-actions {
-    display: flex;
+  .hero-stats {
     gap: 12px;
-    flex-wrap: wrap;
   }
 
-  .btn {
-    display: inline-block;
-    padding: 11px 22px;
-    border-radius: 4px;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.15s;
+  .hero-stat {
+    flex: 1 1 140px;
   }
+}
+```
 
-  .btn-green { background: var(--green); color: var(--white); }
-  .btn-green:hover { background: var(--green-dark); }
+---
 
-  .btn-outline { border: 2px solid var(--green); color: var(--green); background: transparent; }
-  .btn-outline:hover { background: #e4ede0; }
+## Replace Your Current HERO HTML With This
 
-  .hero-illustration {
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 0;
-  }
+```html
+<!-- HERO -->
+<div class="hero" id="top">
+  <div class="hero-floating"></div>
 
-  .hero-illustration svg {
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-    display: block;
-  }
+  <div class="hero-inner">
+    <div class="hero-text">
 
-  /* SECTIONS */
-  .section { padding: 60px 24px; }
-  .section-inner { max-width: 1060px; margin: 0 auto; }
+      <div class="hero-badge">
+        Trusted Local Landscaping Team
+      </div>
 
-  .section h2 {
-    font-size: clamp(20px, 2.5vw, 28px);
-    font-weight: 700;
-    color: var(--green-dark);
-    margin-bottom: 8px;
-  }
+      <h1>
+        Transform Your Yard Into A
+        <span class="hero-highlight">Standout Property</span>
+      </h1>
 
-  .section-desc {
-    font-size: 16px;
-    color: var(--gray);
-    margin-bottom: 36px;
-    max-width: 560px;
-  }
+      <p>
+        Valley Green Landscaping helps homeowners across Hadley and South Hadley keep their properties clean, sharp, and beautiful year-round — from weekly mowing to full seasonal cleanups and garden installs.
+      </p>
 
-  /* ABOUT */
-  .about {
-    background: var(--white);
-    border-bottom: 1px solid var(--gray-light);
-  }
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-green">Get Free Estimate</a>
+        <a href="#work" class="btn btn-outline">View Our Work</a>
+      </div>
 
-  .about .section-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: center;
-  }
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>100+</strong>
+          <span>Local Properties Served</span>
+        </div>
 
-  .about-body {
-    font-size: 16px;
-    color: #333;
-    max-width: 640px;
-    line-height: 1.75;
-  }
+        <div class="hero-stat">
+          <strong>Family</strong>
+          <span>Owned & Operated</span>
+        </div>
 
-  .about-body p + p { margin-top: 14px; }
+        <div class="hero-stat">
+          <strong>5★</strong>
+          <span>Reliable Service</span>
+        </div>
+      </div>
+    </div>
 
-  .about-illo { opacity: 0.18; flex-shrink: 0; }
+    <div class="hero-card">
+      <img
+        src="https://images.unsplash.com/photo-1598902108854-10e335adac99?q=80&w=1200&auto=format&fit=crop"
+        alt="Beautiful landscaped lawn"
+      >
 
-  /* SERVICES */
-  .services { background: var(--green-pale); border-bottom: 1px solid var(--gray-light); }
+      <div class="hero-card-overlay">
+        <h3>Clean Cuts. Reliable Service.</h3>
+        <p>
+          Weekly lawn care, seasonal cleanups, and small landscaping projects throughout the Pioneer Valley.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
-  .service-card {
-    background: var(--white);
-    border: 1px solid var(--gray-light);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .service-photo {
-    height: 180px;
-    background: #c8d9c0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #7a9a70;
-    font-size: 13px;
-  }
-
-  .service-body { padding: 20px; }
-
-  .service-body h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--green-dark);
-    margin-bottom: 6px;
-  }
-
-  .service-body p {
-    font-size: 14px;
-    color: var(--gray);
-    margin-bottom: 14px;
-    line-height: 1.6;
-  }
-
-  .price-tag {
-    display: inline-block;
-    background: var(--green-pale);
-    border: 1px solid var(--gray-light);
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--green-dark);
-  }
 
   /* DIVIDER STRIP */
   .illo-strip {
